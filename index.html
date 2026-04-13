@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,31 +7,33 @@
   <link rel="stylesheet" href="src/css/style.css">
   <script src="src/main.js" defer></script>
 </head>
-
 <body>
   <header>
     <div class="logo">📚🎬 Book & Movie Companion</div>
     <nav>
-      <a href="#" onclick="displayPairings()">Home</a>
+      <a href="#" onclick="goHome()">Home</a>
       <a href="#" onclick="showFavorites()">Favorites</a>
       <a href="#" onclick="showProfile()">Profile</a>
       <button class="login-btn" onclick="showLogin()">Log In</button>
+      <button onclick="toggleTheme()">Toggle Theme</button>
     </nav>
   </header>
 
   <main>
     <section class="search-section">
       <h1>Find Your Next Book or Movie</h1>
-      <input type="text" id="searchInput" placeholder="Search for a book or movie...">
-      <div class="search-buttons">
-        <button onclick="search('book')">Find a Book → Movie</button>
-        <button onclick="search('movie')">Find a Movie → Book</button>
-      </div>
+      <form id="searchForm">
+        <input type="text" id="searchInput" placeholder="Search for a book or movie...">
+        <div class="search-buttons">
+          <button type="button" onclick="search('book')">Find a Book → Movie</button>
+          <button type="button" onclick="search('movie')">Find a Movie → Book</button>
+        </div>
+      </form>
     </section>
 
     <section class="filter-section">
       <h2>Filter by Genre</h2>
-      <select id="genreSelect" multiple onchange="applyFilters()">
+      <select id="genreSelect" multiple>
         <option value="fantasy">Fantasy</option>
         <option value="adventure">Adventure</option>
         <option value="romance">Romance</option>
@@ -56,13 +57,12 @@
     <div id="loginModal" class="modal" style="display:none;">
       <div class="modal-content">
         <h2>Log In</h2>
-        <input type="text" id="username" placeholder="Enter username">
-        <button onclick="login()">Log In</button>
+        <form id="loginForm">
+          <input type="text" id="username" placeholder="Enter username">
+          <button type="submit">Log In</button>
+        </form>
       </div>
     </div>
   </main>
-
-  
 </body>
-
 </html>
