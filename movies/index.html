@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book & Movie Companion</title>
+  <link rel="stylesheet" href="src/css/style.css">
+  <script src="src/main.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div class="logo">📚🎬 Book & Movie Companion</div>
+    <nav>
+      <a href="#" onclick="displayPairings()">Home</a>
+      <a href="#" onclick="showFavorites()">Favorites</a>
+      <a href="#" onclick="showProfile()">Profile</a>
+      <button class="login-btn" onclick="showLogin()">Log In</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="search-section">
+      <h1>Find Your Next Book or Movie</h1>
+      <input type="text" id="searchInput" placeholder="Search for a book or movie...">
+      <div class="search-buttons">
+        <button onclick="search('book')">Find a Book → Movie</button>
+        <button onclick="search('movie')">Find a Movie → Book</button>
+      </div>
+    </section>
+
+    <section class="filter-section">
+      <h2>Filter by Genre</h2>
+      <select id="genreSelect" multiple onchange="applyFilters()">
+        <option value="fantasy">Fantasy</option>
+        <option value="adventure">Adventure</option>
+        <option value="romance">Romance</option>
+        <option value="drama">Drama</option>
+        <option value="sci-fi">Sci-Fi</option>
+      </select>
+    </section>
+
+    <section class="featured">
+      <h2>Featured Pairings</h2>
+      <div class="pairings" id="pairingsContainer"></div>
+    </section>
+
+    <section id="profileSection" style="display:none;">
+      <h2>User Profile</h2>
+      <p id="profileName"></p>
+      <h3>Your Favorites</h3>
+      <ul id="favoritesList"></ul>
+    </section>
+
+    <div id="loginModal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <h2>Log In</h2>
+        <input type="text" id="username" placeholder="Enter username">
+        <button onclick="login()">Log In</button>
+      </div>
+    </div>
+  </main>
+
+  
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  background-color: #F3F4F6;
+  color: #1E3A8A;
+}
+
+header {
+  background-color: #1E3A8A;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+nav a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+.login-btn {
+  background-color: #FBBF24;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.search-section {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.search-section input {
+  width: 60%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-buttons button {
+  margin: 1rem;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-buttons button:first-child {
+  background-color: #FBBF24;
+  color: #1E3A8A;
+}
+
+.search-buttons button:last-child {
+  background-color: #1E3A8A;
+  color: white;
+}
+
+.filter-section {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+#genreSelect {
+  width: 250px;
+  height: 120px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  background-color: white;
+  color: #1E3A8A;
+}
+
+.featured {
+  padding: 2rem;
+}
+
+.pairings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: 250px;
+  text-align: center;
+  padding: 1rem;
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex; justify-content: center; align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+}
