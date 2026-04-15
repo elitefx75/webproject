@@ -69,6 +69,10 @@ body[data-theme="dark"] header p {
   color: #cbd5e1;
 }
 
+.hero-copy h2 {
+  color: #60a5fa;
+}
+
 nav {
   display: flex;
   flex-wrap: wrap;
@@ -127,7 +131,7 @@ body[data-theme="dark"] .hero-copy {
 }
 
 .hero-copy p {
-  color: #475569;
+  color: #0f172a;
   max-width: 44rem;
 }
 
@@ -148,6 +152,11 @@ body[data-theme="dark"] .hero-copy p {
   border: 1px solid #cbd5e1;
   font-size: 1rem;
   background: white;
+  color: #0f172a;
+}
+
+.hero-search input::placeholder {
+  color: #64748b;
 }
 
 body[data-theme="dark"] .hero-search input {
@@ -245,10 +254,21 @@ body[data-theme="dark"] select {
   border-radius: 24px;
   padding: 1.5rem;
   box-shadow: 0 16px 36px rgba(15, 23, 42, 0.05);
+  color: #0f172a;
+}
+
+.compare-summary h3,
+.compare-summary p {
+  color: #0f172a;
 }
 
 body[data-theme="dark"] .compare-summary {
   background: rgba(15, 23, 42, 0.85);
+}
+
+body[data-theme="dark"] .compare-summary h3,
+body[data-theme="dark"] .compare-summary p {
+  color: #e2e8f0;
 }
 
 .profile-panel {
@@ -282,6 +302,7 @@ body[data-theme="dark"] .profile-panel {
 .compare-detail p {
   margin: 0;
   line-height: 1.7;
+  color: #0f172a;
 }
 
 .featured {
@@ -372,6 +393,7 @@ body[data-theme="dark"] .card {
 
 .card-main h3 {
   margin: 0;
+  color: #60a5fa;
   transition: color 0.25s ease;
 }
 
@@ -557,13 +579,21 @@ body[data-theme="dark"] .meta.small {
 
 .card-front .meta,
 .card-back .meta {
-  color: #64748b;
+  color: #0f172a;
   font-size: 0.9rem;
 }
 
-.subtitle {
+.card-back p {
+  color: #0f172a;
+}
+
+.card-back p strong {
+  color: #0f172a;
+}
+
+..subtitle {
   margin: 0.35rem 0;
-  color: #475569;
+  color: #0f172a;
 }
 
 body[data-theme="dark"] .subtitle {
@@ -622,6 +652,7 @@ body[data-theme="dark"] .compare-card {
 
 .compare-card p {
   margin: 0.65rem 0;
+  color: #0f172a;
 }
 
 .modal {
