@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Book & Movie Companion</title>
   <link rel="stylesheet" href="src/css/style.css" />
-  <script  type=module src="src/main.js" defer></script>
+  <script type=module src="src/main.js" defer></script>
 </head>
 
 <body>
@@ -27,14 +27,12 @@
         <button class="accent" type="button" onclick="showLogin()">Log In</button>
         <button type="button" onclick="toggleTheme()">Theme</button>
       </nav>
-      <div class="status-strip">
-        <span id="savedStatus">Ready to compare stories.</span>
-        <div class="user-chip">
-          <span class="user-dot"></span>
-          <span id="statusUser">Guest</span>
-        </div>
-      </div>
     </header>
+
+    <div class="status-strip">
+      <span class="status-chip">👤 <strong id="statusUser">Guest</strong></span>
+      <p id="savedStatus">Ready for your next pairing search.</p>
+    </div>
 
     <main>
       <section class="hero-panel">

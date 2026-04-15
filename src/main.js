@@ -200,11 +200,11 @@ function displayPairings(list = pairings, mode = 'book') {
           </div>
           <div class="card-main">
             <h3>${pairing.book}</h3>
+            <p class="movie-name">🎬 ${pairing.movie} · ${pairing.releaseYear}</p>
             <p class="subtitle">${pairing.author} · ${pairing.year}</p>
             <p class="book-description">${pairing.description || 'A data-rich recommendation for your next watch.'}</p>
             <p class="meta small">Genres: ${pairing.genres.join(', ')}</p>
             <p class="meta small">Pages: ${pairing.pageCount} · Editions: ${pairing.editionCount}</p>
-            <p class="subtitle">🎬 ${pairing.movie} (${pairing.releaseYear})</p>
           </div>
         </div>
         <div class="card-back">
@@ -413,7 +413,16 @@ async function search(type = 'book') {
   if (type === 'book') {
     results = await fetchBooks(input);
   } else {
-    results = await fetchMovie(input);
+    const [movies, books] = await Promise.all([fetchMovie(input), fetchBooks(input)]);
+    results = movies.map((movie, index) => ({
+      ...movie,
+      book: books[index]?.book || movie.book,
+      author: books[index]?.author || movie.author,
+      year: books[index]?.year || movie.year,
+      pageCount: books[index]?.pageCount || movie.pageCount,
+      editionCount: books[index]?.editionCount || movie.editionCount,
+      source: books[index] ? 'Movie => Book lookup' : movie.source
+    }));
   }
 
   displayPairings(results, currentMode);
@@ -429,7 +438,7 @@ function toggleTheme() {
 
 function init() {
   const state = getSiteState();
-  if (state.theme) document.body.dataset.theme = state.theme;
+  document.body.dataset.theme = state.theme || 'dark';
   if (state.lastSearch) document.getElementById('searchInput').value = state.lastSearch;
   if (state.currentMode) currentMode = state.currentMode;
   if (state.currentView) currentView = state.currentView;
@@ -445,6 +454,14 @@ function init() {
       search(currentMode);
     }
   });
+
+  window.goHome = goHome;
+  window.showFavorites = showFavorites;
+  window.showProfile = showProfile;
+  window.showLogin = showLogin;
+  window.closeLogin = closeLogin;
+  window.toggleTheme = toggleTheme;
+  window.search = search;
 
   document.getElementById('loginForm').addEventListener('submit', e => {
     e.preventDefault();
