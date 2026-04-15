@@ -363,6 +363,10 @@ function renderFavoritesList(listId) {
   if (!list) return;
   list.innerHTML = '';
 
+  if (!favorites.length) {
+    list.innerHTML = '<li class="empty-state">No favorites saved yet. Tap the heart icon on any card to preserve a pairing.</li>';
+  }
+
   favorites.forEach((item, index) => {
     const li = document.createElement('li');
     li.className = 'favorite-item';
@@ -452,13 +456,20 @@ function init() {
     closeLogin();
     showProfile();
     updateStatus(`Welcome, ${user}!`);
+    document.getElementById('statusUser').textContent = user;
   });
 
   document.getElementById('loginModal').addEventListener('click', e => {
     if (e.target.id === 'loginModal') closeLogin();
   });
 
-  if (state.lastSearch) {
+  document.getElementById('statusUser').textContent = localStorage.getItem('user') || 'Guest';
+
+  if (state.currentView === 'favorites') {
+    showFavorites();
+  } else if (state.currentView === 'profile') {
+    showProfile();
+  } else if (state.lastSearch) {
     search(currentMode);
   } else {
     displayPairings(pairings, currentMode);
