@@ -1,68 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Book & Movie Companion</title>
-  <link rel="stylesheet" href="src/css/style.css">
+  <link rel="stylesheet" href="src/css/style.css" />
   <script src="src/main.js" defer></script>
 </head>
+
 <body>
-  <header>
-    <div class="logo">📚🎬 Book & Movie Companion</div>
-    <nav>
-      <a href="#" onclick="goHome()">Home</a>
-      <a href="#" onclick="showFavorites()">Favorites</a>
-      <a href="#" onclick="showProfile()">Profile</a>
-      <button class="login-btn" onclick="showLogin()">Log In</button>
-      <button onclick="toggleTheme()">Toggle Theme</button>
-    </nav>
-  </header>
-
-  <main>
-    <section class="search-section">
-      <h1>Find Your Next Book or Movie</h1>
-      <form id="searchForm">
-        <input type="text" id="searchInput" placeholder="Search for a book or movie...">
-        <div class="search-buttons">
-          <button type="button" onclick="search('book')">Find a Book → Movie</button>
-          <button type="button" onclick="search('movie')">Find a Movie → Book</button>
+  <div class="page-shell">
+    <header>
+      <div class="branding">
+        <span class="logo">📚🎬</span>
+        <div>
+          <h1>Book & Movie Companion</h1>
+          <p>Search, compare, and play trailers for your next favorite story.</p>
         </div>
-      </form>
-    </section>
+      </div>
 
-    <section class="filter-section">
-      <h2>Filter by Genre</h2>
-      <select id="genreSelect" multiple>
-        <option value="fantasy">Fantasy</option>
-        <option value="adventure">Adventure</option>
-        <option value="romance">Romance</option>
-        <option value="drama">Drama</option>
-        <option value="sci-fi">Sci-Fi</option>
-      </select>
-    </section>
+      <nav>
+        <button type="button" onclick="goHome()">Home</button>
+        <button type="button" onclick="showFavorites()">Favorites</button>
+        <button type="button" onclick="showProfile()">Profile</button>
+        <button class="accent" type="button" onclick="showLogin()">Log In</button>
+        <button type="button" onclick="toggleTheme()">Theme</button>
+      </nav>
+    </header>
 
-    <section class="featured">
-      <h2>Featured Pairings</h2>
-      <div class="pairings" id="pairingsContainer"></div>
-    </section>
+    <main>
+      <section class="hero-panel">
+        <div class="hero-copy">
+          <h2>Compare books and movies in one place.</h2>
+          <p>Search for a title, pick a pairing, and get a matching book or movie recommendation instantly.</p>
+          <form id="searchForm" class="hero-search">
+            <input type="text" id="searchInput" placeholder="Search for a book or movie..." />
+            <div class="hero-actions">
+              <button type="button" onclick="search('book')">Book → Movie</button>
+              <button type="button" onclick="search('movie')">Movie → Book</button>
+            </div>
+          </form>
+        </div>
 
-    <section id="profileSection" style="display:none;">
-      <h2>User Profile</h2>
-      <p id="profileName"></p>
-      <h3>Your Favorites</h3>
-      <ul id="favoritesList"></ul>
-    </section>
+        <div class="hero-player">
+          <div class="player-card">
+            <h3>Watch a trailer</h3>
+            <video id="previewPlayer" controls
+              poster="https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=800&q=80">
+              <source src="" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p id="playerLabel">Select a pairing and press Play Trailer.</p>
+          </div>
+        </div>
+      </section>
 
-    <div id="loginModal" class="modal" style="display:none;">
+      <section class="filters-panel">
+        <div>
+          <h3>Filter by genre</h3>
+          <select id="genreSelect" multiple>
+            <option value="fantasy">Fantasy</option>
+            <option value="adventure">Adventure</option>
+            <option value="romance">Romance</option>
+            <option value="drama">Drama</option>
+            <option value="sci-fi">Sci-Fi</option>
+          </select>
+        </div>
+
+        <div class="compare-summary" id="comparePanel">
+          <h3>Compare results</h3>
+          <p>Select a pairing to see an instant book/movie suggestion.</p>
+          <div id="compareDetail" class="compare-detail"></div>
+        </div>
+      </section>
+
+      <section class="featured">
+        <div class="section-header">
+          <h2>Featured pairings</h2>
+          <p>Tap a pairing to compare or play a trailer.</p>
+        </div>
+        <div class="pairings" id="pairingsContainer"></div>
+      </section>
+
+      <section id="favoritesSection" class="profile-panel hidden">
+        <div class="profile-header">
+          <h2>Favorites</h2>
+          <span id="favoritesCount">0 saved</span>
+        </div>
+        <ul id="favoritesList"></ul>
+      </section>
+
+      <section id="profileSection" class="profile-panel hidden">
+        <div class="profile-header">
+          <h2>User Profile</h2>
+          <span id="profileName"></span>
+        </div>
+        <h3>Your favorites</h3>
+        <ul id="profileFavoritesList"></ul>
+      </section>
+    </main>
+
+    <div id="loginModal" class="modal hidden">
       <div class="modal-content">
+        <button class="close-button" type="button" onclick="closeLogin()">×</button>
         <h2>Log In</h2>
         <form id="loginForm">
-          <input type="text" id="username" placeholder="Enter username">
+          <input type="text" id="username" placeholder="Enter username" required />
           <button type="submit">Log In</button>
         </form>
       </div>
     </div>
-  </main>
+  </div>
 </body>
+
 </html>
